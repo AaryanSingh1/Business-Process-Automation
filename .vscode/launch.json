@@ -12,8 +12,7 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": ["C:\\Users\\hp\\Desktop\\SEM 2\\SCRIPTING REPOS\\lab 2\\Business-Process-Automation\\sales_data.csv"]
-            //"args" : ["C:\\Users\\hp\\Desktop\\SEM 2\\SCRIPTING REPOS\\lab 2\\Business-Process-Automation"]
-
+            //"args": ["C:\\Users\\hp\\Desktop\\SEM 2\\SCRIPTING REPOS\\lab 2\\Business-Process-Automation"]
         }
     ]
 }

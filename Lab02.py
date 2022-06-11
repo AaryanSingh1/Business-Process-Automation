@@ -73,7 +73,7 @@ def split_sales_into_orders(sales_csv, order_dir):
 
         # save the ordered information to an excel spreadsheet
         sheet_name = 'Order #' + str(order_id)
-        order_df.to_excel(order_file_path, index= False, shet_name= sheet_name)
+        order_df.to_excel(order_file_path, index= False, sheet_name= sheet_name)
 
 sales_csv = get_sales_csv()
 order_dir = get_order_dir(sales_csv)
