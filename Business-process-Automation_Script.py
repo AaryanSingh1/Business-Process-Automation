@@ -3,6 +3,7 @@ import os
 from datetime import date
 import pandas as pd
 import re
+import xlsxwriter
 
 
 def get_sales_csv():
@@ -73,7 +74,26 @@ def split_sales_into_orders(sales_csv, order_dir):
 
         # save the ordered information to an excel spreadsheet
         sheet_name = 'Order #' + str(order_id)
-        order_df.to_excel(order_file_path, index= False, sheet_name= sheet_name)
+        # order_df.to_excel(order_file_path, index= False, sheet_name= sheet_name)
+        
+        
+        writer = pd.ExcelWriter(order_file_path, engine= 'xlsxwriter')
+        order_df.to_excel(writer, index= False, sheet_name = sheet_name)
+
+        workbook = writer.book
+        worksheet = writer.sheets[sheet_name]
+        
+        # building the money format
+        money_fmt = workbook.add_format({'num_format': '$#,##0.00', 'bold': True})
+
+        # re-sizing the columns
+        worksheet.set_column('A:E', 15)
+        worksheet.set_column('F:G', 15, money_fmt)
+        worksheet.set_column('H:J', 15)
+
+
+        writer.save()
+
 
 sales_csv = get_sales_csv()
 order_dir = get_order_dir(sales_csv)
